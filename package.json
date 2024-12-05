@@ -1,0 +1,13 @@
+{
+  "name": "com.yourname.terrainbuilder",
+  "version": "1.0.0",
+  "displayName": "Terrain Builder",
+  "description": "Tools for creating terrain, obstacles, and navigation paths.",
+  "unity": "2021.3",
+  "author": {
+    "name": "Mikhail Kustikov",
+    "email": "ferundal@GMAIL.COM",
+    "url": "https://yourwebsite.com"
+  },
+  "dependencies": {}
+}
