@@ -1,9 +1,6 @@
-using System.Linq;
-using TerrainGeneration.MeshGeneration;
 using TerrainGeneration.ModelLevel;
-using UnityEngine;
 
-namespace LevelGeneration
+namespace TerrainGeneration.MeshGeneration.VoxelMeshGenerators
 {
     public class Empty : IVoxelMeshGenerator
     {

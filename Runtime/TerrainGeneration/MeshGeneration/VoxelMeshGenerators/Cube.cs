@@ -1,8 +1,6 @@
-using LevelGeneration;
-using TerrainGeneration.MeshGeneration;
 using TerrainGeneration.ModelLevel;
 
-namespace Packages.com.ferundal.terrainbuilder.Runtime.LevelGeneration.MeshGeneration.VoxelMeshGenerators
+namespace TerrainGeneration.MeshGeneration.VoxelMeshGenerators
 {
     public class Cube : IVoxelMeshGenerator
     {

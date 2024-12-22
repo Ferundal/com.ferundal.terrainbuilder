@@ -1,7 +1,6 @@
-using TerrainGeneration.MeshGeneration;
 using TerrainGeneration.ModelLevel;
 
-namespace LevelGeneration
+namespace TerrainGeneration.MeshGeneration.VoxelMeshGenerators
 {
     public interface IVoxelMeshGenerator
     {
