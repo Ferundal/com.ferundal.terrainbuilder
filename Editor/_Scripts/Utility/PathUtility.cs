@@ -1,12 +1,12 @@
 using UnityEditor;
 
-namespace LevelConstructor
+namespace Editor._Scripts.Utility
 {
     public class PathUtility
     {
-        public static string GetLevelConstructorFolder()
+        public static string GetTerrainBuilderFolder()
         {
-            return GetPathToFolder("Assets", "LevelConstructor");
+            return "Packages/com.ferundal.terrainbuilder";
         }
 
         public static string GetPathToFolder(string initialRelativePath, string targetFolderName)
@@ -24,8 +24,8 @@ namespace LevelConstructor
             return null;
         }
         
-        public static string PanelsPath => $"{PathUtility.GetLevelConstructorFolder()}/Editor/Panels";
+        public static string PanelsPath => $"{PathUtility.GetTerrainBuilderFolder()}/Editor/Panels";
 
-        public static string VoxelPrefabsPath => $"{PathUtility.GetLevelConstructorFolder()}/Editor/Prefabs";
+        public static string VoxelPrefabsPath => $"{PathUtility.GetTerrainBuilderFolder()}/Editor/Prefabs";
     }
 }

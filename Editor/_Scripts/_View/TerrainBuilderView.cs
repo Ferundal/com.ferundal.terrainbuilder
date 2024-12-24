@@ -9,9 +9,7 @@ namespace Editor._Scripts._View
 {
     public class TerrainBuilderView
     {
-        public PanelSwitcher PanelSwitcher;
-        
-        private VisualElement _root;
+        public InspectorUI InspectorUI;
         public VisualElement Root { get; private set; }
 
         public TerrainBuilderView(SerializedObject serializedTerrainBuilder)
@@ -22,8 +20,8 @@ namespace Editor._Scripts._View
             var terrainScriptableObjectPropertyFieldView = new PropertyField(terrainScriptableObjectPropertyField);
             Root.Add(terrainScriptableObjectPropertyFieldView);
 
-            PanelSwitcher = new PanelSwitcher();
-            Root.Add(PanelSwitcher.Root);
+            InspectorUI = new InspectorUI();
+            Root.Add(InspectorUI.Root);
         }
     }
 }

@@ -6,39 +6,41 @@ using UnityEngine.UIElements;
 
 namespace Editor._Scripts._View
 {
-    public class PanelSwitcher
+    public class InspectorUI
     {
         private const string NavigationButtonName = "navigation-button";
         private const string PanelBodyName = "body";
         
         private Dictionary<string, string> _panelSources;
         private Dictionary<string, string> _panelStyleSources;
-        private VisualElement _navigationButtons;
+
         private VisualElement _loadingPanel;
         private int _statePanelBodyIndex;
-
+        
+        public VisualElement NavigationButtons { get; private set; }
         public VisualElement Root { get; private set; }
 
-        public PanelSwitcher()
+        public InspectorUI()
         {
-            _panelStyleSources = new Dictionary<string, string>();
+            _panelSources = new Dictionary<string, string>();
             _panelStyleSources = new Dictionary<string, string>();
 
             Root = new VisualElement();
-            _navigationButtons = new VisualElement();
-            Root.Add(_navigationButtons);
+            NavigationButtons = new VisualElement();
+            Root.Add(NavigationButtons);
 
             _loadingPanel = CreateLoadingLabel();
             Root.Add(_loadingPanel);
             _statePanelBodyIndex = Root.IndexOf(_loadingPanel);
         }
 
-        public void Add(string stateName, string visualTreeAssetPath, string stylesheetPath)
+        public InspectorUI AddPanel(string stateName, string visualTreeAssetPath, string stylesheetPath)
         {
             _panelSources.Add(stateName, visualTreeAssetPath);
             _panelStyleSources.Add(stateName, stylesheetPath);
 
             AddStatePanelSwitchButton(stateName, visualTreeAssetPath, stylesheetPath);
+            return this;
         }
 
         public void SetStatePanel(string stateName)
@@ -65,7 +67,7 @@ namespace Editor._Scripts._View
             navigationButton.RemoveFromHierarchy();
             navigationButton.name = stateName;
             navigationButton.styleSheets.Add(styleSheet);
-            _navigationButtons.Add(navigationButton);
+            NavigationButtons.Add(navigationButton);
         }
         
         // Method to create the loading message label
@@ -74,16 +76,20 @@ namespace Editor._Scripts._View
             var label = new Label("Loading... Please wait...");
 
             // Styling the label
-            label.style.color = Color.white;
-            label.style.backgroundColor = Color.yellow;
+            label.style.color = new Color(0.2f, 0.2f, 0.2f); // Dark gray color for text (easier on the eyes than white)
+            label.style.backgroundColor = new Color(0.9f, 0.9f, 0.9f); // Light gray background (more neutral than yellow)
+
+            // Border styling
             label.style.borderTopWidth = 2;
             label.style.borderBottomWidth = 2;
             label.style.borderLeftWidth = 2;
             label.style.borderRightWidth = 2;
-            label.style.borderTopColor = Color.red;
-            label.style.borderBottomColor = Color.red;
-            label.style.borderLeftColor = Color.red;
-            label.style.borderRightColor = Color.red;
+            label.style.borderTopColor = new Color(0.4f, 0.6f, 0.8f); // Blue color for the top border
+            label.style.borderBottomColor = new Color(0.4f, 0.6f, 0.8f); // Blue color for the bottom border
+            label.style.borderLeftColor = new Color(0.4f, 0.6f, 0.8f); // Blue color for the left border
+            label.style.borderRightColor = new Color(0.4f, 0.6f, 0.8f); // Blue color for the right border
+
+            // Padding styling
             label.style.paddingLeft = 10;
             label.style.paddingRight = 10;
             label.style.paddingTop = 5;

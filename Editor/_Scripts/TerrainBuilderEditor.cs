@@ -1,5 +1,6 @@
 using Editor._Scripts._Model.FSM;
 using Editor._Scripts._View;
+using Editor._Scripts.Utility;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -16,9 +17,6 @@ namespace Editor.Scripts
         private TerrainBuilderView _terrainBuilderView;
         private TerrainBuilderFSM _terrainBuilderFSM;
 
-        private SerializedProperty _levelSerializedProperty;
-        private PropertyField _levelPropertyField;
-
         private TerrainBuilderEventHandler _terrainBuilderEventHandler;
         
         /// <summary>
@@ -26,7 +24,20 @@ namespace Editor.Scripts
         /// </summary>
         private void OnEnable()
         {
-            _terrainBuilderView = new TerrainBuilderView(serializedObject); 
+            _terrainBuilderView = new TerrainBuilderView(serializedObject);
+            _terrainBuilderView.InspectorUI
+                .AddPanel("voxelEditor",
+                    $"{PathUtility.PanelsPath}/VoxelEditorPanel.uxml",
+                    $"{PathUtility.PanelsPath}/Panel.uss")
+                .AddPanel("sideEditor",
+                    $"{PathUtility.PanelsPath}/SideEditorPanel.uxml",
+                    $"{PathUtility.PanelsPath}/Panel.uss")
+                .AddPanel("navMeshBaker",
+                    $"{PathUtility.PanelsPath}/SideEditorPanel.uxml",
+                    $"{PathUtility.PanelsPath}/Panel.uss");
+
+            _terrainBuilderFSM = new TerrainBuilderFSM();
+            
             
             var terrainBuilder = target as TerrainBuilder;
 

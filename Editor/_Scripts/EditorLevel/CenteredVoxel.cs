@@ -1,7 +1,7 @@
 using TerrainGeneration;
 using UnityEngine;
 
-namespace Editor.Scripts.EditorLevel
+namespace Editor._Scripts.EditorLevel
 {
     //TODO replace static with Zenject?
     

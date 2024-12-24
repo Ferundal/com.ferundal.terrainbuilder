@@ -1,5 +1,4 @@
 using System;
-using Editor.Scripts.EditorLevel;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace Editor.Scripts.VoxelRaycaster
 {
     public class VoxelRaycaster
     {
-        private Ray _ray;
+        /*private Ray _ray;
         private RaycastHit _hitInfo;
         private Vector3 _groundTouchPosition;
 
@@ -58,6 +57,6 @@ namespace Editor.Scripts.VoxelRaycaster
             _groundTouchPosition = _ray.origin + _ray.direction * rayDistance;
             _groundTouchPosition -= levelConstructorPosition;
             return true;
-        }
+        }*/
     }
 }

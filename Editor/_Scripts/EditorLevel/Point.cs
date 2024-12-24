@@ -1,4 +1,4 @@
-namespace Editor.Scripts.EditorLevel
+namespace Editor._Scripts.EditorLevel
 {
     public class Point
     {
