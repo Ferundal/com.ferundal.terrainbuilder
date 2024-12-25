@@ -17,8 +17,9 @@ namespace Editor._Scripts._View
         private VisualElement _loadingPanel;
         private int _statePanelBodyIndex;
         
-        public VisualElement NavigationButtons { get; private set; }
         public VisualElement Root { get; private set; }
+        public VisualElement NavigationButtons { get; private set; }
+        public VisualElement Panel { get; private set; }
 
         public InspectorUI()
         {
@@ -48,13 +49,13 @@ namespace Editor._Scripts._View
             var visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(_panelSources[stateName]);
             var instantiatedTemplate = visualTreeAsset.Instantiate();
 
-            var statePanel = instantiatedTemplate.Q<VisualElement>(PanelBodyName);
-            statePanel.RemoveFromHierarchy();
+            Panel = instantiatedTemplate.Q<VisualElement>(PanelBodyName);
+            Panel.RemoveFromHierarchy();
             var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(_panelStyleSources[stateName]);
-            statePanel.styleSheets.Add(stylesheet);
+            Panel.styleSheets.Add(stylesheet);
             
             Root.RemoveAt(_statePanelBodyIndex);
-            Root.Insert(_statePanelBodyIndex, statePanel);
+            Root.Insert(_statePanelBodyIndex, Panel);
         }
 
         private void AddStatePanelSwitchButton(string stateName, string visualTreeAssetPath, string stylesheetPath)

@@ -1,8 +1,10 @@
 using Editor._Scripts._Model.FSM;
+using Editor._Scripts._Model.FSM.States.NavMeshBaker;
+using Editor._Scripts._Model.FSM.States.SideEditor;
+using Editor._Scripts._Model.FSM.States.VoxelEditor;
 using Editor._Scripts._View;
 using Editor._Scripts.Utility;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -37,8 +39,11 @@ namespace Editor.Scripts
                     $"{PathUtility.PanelsPath}/Panel.uss");
 
             _terrainBuilderFSM = new TerrainBuilderFSM();
-            
-            
+            _terrainBuilderFSM
+                .AddState<VoxelEditor>("voxelEditor")
+                .AddState<SideEditor>("sideEditor")
+                .AddState<NavMeshBaker>("navMeshBaker");
+
             var terrainBuilder = target as TerrainBuilder;
 
             _terrainBuilderEventHandler = terrainBuilder.Handler;
